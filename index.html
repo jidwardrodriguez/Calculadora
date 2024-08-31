@@ -72,6 +72,8 @@
             <button class="button operator" onclick="setOperator('+')">+</button>
             
             <button class="button operator" onclick="convertToFahrenheit()">°F</button>
+            <button class="button operator" onclick="convertToKilograms()">K</button>
+            <button class="button operator">P</button>
         </div>
     </div>
 
@@ -121,6 +123,16 @@
             const celsius = parseFloat(currentInput);
             const fahrenheit = celsius * 9 / 5 + 32;
             currentInput = fahrenheit;
+            operator = '';
+            firstOperand = '';
+            updateDisplay();
+        }
+
+        function convertToKilograms() {
+            if (currentInput === '') return;
+            const grams = parseFloat(currentInput);
+            const kilograms = grams / 1000;
+            currentInput = kilograms;
             operator = '';
             firstOperand = '';
             updateDisplay();
