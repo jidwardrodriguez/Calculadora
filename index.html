@@ -73,7 +73,8 @@
             
             <button class="button operator" onclick="convertToFahrenheit()">°F</button>
             <button class="button operator" onclick="convertToKilograms()">K</button>
-            <button class="button operator">P</button>
+            <button class="button operator" onclick="convertToPSI()">K</button>
+            <button class="button operator" onclick="convertToUSD()">$</button>
         </div>
     </div>
 
@@ -133,6 +134,17 @@
             const grams = parseFloat(currentInput);
             const kilograms = grams / 1000;
             currentInput = kilograms;
+            operator = '';
+            firstOperand = '';
+            updateDisplay();
+        }
+
+        function convertToUSD() {
+            if (currentInput === '') return;
+            const cop = parseFloat(currentInput);
+            const exchangeRate = 4000; // Supongamos que 1 USD = 4000 COP
+            const usd = cop / exchangeRate;
+            currentInput = usd.toFixed(2); // Mostrar con dos decimales
             operator = '';
             firstOperand = '';
             updateDisplay();
