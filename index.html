@@ -49,7 +49,7 @@
 </head>
 <body>
     <div class="calculator">
-        <div id="display" class="display"></div>
+        <div id="display" class="display">0</div>
         <div class="buttons">
             <button class="button" onclick="appendNumber('7')">7</button>
             <button class="button" onclick="appendNumber('8')">8</button>
@@ -70,6 +70,8 @@
             <button class="button" onclick="clearDisplay()">C</button>
             <button class="button operator" onclick="calculateResult()">=</button>
             <button class="button operator" onclick="setOperator('+')">+</button>
+            
+            <button class="button operator" onclick="convertToFahrenheit()">°F</button>
         </div>
     </div>
 
@@ -109,6 +111,16 @@
                     break;
             }
             currentInput = result;
+            operator = '';
+            firstOperand = '';
+            updateDisplay();
+        }
+
+        function convertToFahrenheit() {
+            if (currentInput === '') return;
+            const celsius = parseFloat(currentInput);
+            const fahrenheit = celsius * 9 / 5 + 32;
+            currentInput = fahrenheit;
             operator = '';
             firstOperand = '';
             updateDisplay();
