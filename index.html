@@ -73,7 +73,7 @@
             
             <button class="button operator" onclick="convertToFahrenheit()">°F</button>
             <button class="button operator" onclick="convertToKilograms()">K</button>
-            <button class="button operator" onclick="convertToPSI()">K</button>
+            <button class="button operator" onclick="convertToPSI()">P</button>
             <button class="button operator" onclick="convertToUSD()">$</button>
         </div>
     </div>
@@ -145,6 +145,16 @@
             const exchangeRate = 4000; // Supongamos que 1 USD = 4000 COP
             const usd = cop / exchangeRate;
             currentInput = usd.toFixed(2); // Mostrar con dos decimales
+            operator = '';
+            firstOperand = '';
+            updateDisplay();
+        }
+
+        function convertToPSI() {
+            if (currentInput === '') return;
+            const bar = parseFloat(currentInput);
+            const psi = bar * 14.5038; // 1 bar = 14.5038 psi
+            currentInput = psi.toFixed(2); // Mostrar con dos decimales
             operator = '';
             firstOperand = '';
             updateDisplay();
